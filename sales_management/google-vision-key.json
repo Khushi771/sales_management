@@ -1,13 +1,2 @@
 {
-  "type": "service_account",
-  "project_id": "sales-management-499305",
-  "private_key_id": "0904bb4bb3f4ac447ee304f861180ab017496418",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDMvLxnO3ix8ZD5\nSwsExVSO1VyxCMbTo2m+/u/amfQwvHG6FD6IeO2QJyyA25+teO5bSze+maO9JE+j\np4VKk/ymizVBTLeqWtvYkVGVRQfN3sA4qVvw+tWWSt3y7NvrLDrNkWMf8ZED3+PR\nTlM2xZVHhtD6f76ctBTWwxbzwOPA2/7v07nm2TLqU+DK8Doi7Lg3LswrKTTeOHVT\nxH8jJEC0nQvbaYWYZRH69ME6iBTn3jnlBf7i3wvb7J/459UTl+YHvD9xPzPXZw+K\nw8Wkd0jlYWmALupJBCOVjuMepjLSG8B/km2X3IYs88IoISNkD/dKEFGucn0H8UAd\nkwEQRsH1AgMBAAECggEAPJ8Bthtg4Gdjgr0alR4MrII2gODVZmLzc68uu+5r5GZX\n0j4eSfBsfwtqXPkqrYWqJfP+nHwHhICU6CM5D10EKRf8+8nIdDOU9uoIWwdmiSmU\nhvJ2m8LZrTebwkspztd4zddnn1S6mIgZf6cOcqBMVDJx/EoI2YNkzDZVvHT3uumh\nQNJTLuselO7ZkpApnco8moJnKfYcFMwm40iWRYT5uIEWieJc3SvseLiW49yQh2pZ\nnVIfhCsJjMsfQblG4znZnbyoCPRRI9MACsTtkoHJ5SLqYeHtK+onFoTNmg9FxWKS\nK/HCCzOWIGk9roZ5kflImq5Kkp7y/iU9Q1e5NUWKXQKBgQDulW3QpLQo+TS1dOwb\n3J839nU67nAcv7+SgJApPvyWq7WsWas5ZR4CHgoPSqVHqZBQJ94iDP2An5W7vNhG\nt9Vk0kjANp5hB454u9vyjcFz89fjOjjApwbZ5PBz6x3xHPJ974gIZT748ZHjL+ee\njjn7BcuVjQDp4vXG7hlOB3h84wKBgQDbrsvBy+WCrcFZ1YL86VZZExQtdSuGcu1n\n+I8r7K/tFfeFJTMN7L1+2x8uC8FyLQzY7D49PgPf2r7tP0JucG+UMr48QYXy/IpR\n5M4zRPH1MzmcX5PJHmPivXuk7EFFKynR58IgiAqmLdDKxmhnWB0PEQEAWZ+fIprH\nw+41QeSVRwKBgQDazEMnYsSuBszl1FJrwsppgiZEY0KBuv+vFSQgD1mJu/MiGiHC\nww7gFjhXibdFnyVvvQAj7hHVkYS55Rfa0uBqU8bQL8bTaSCpbG7rZEETW36TLmO5\nmfPYg/JX/Dk7U7a286KnQGKd3rxRwy8A46IcqVXo0qUR2UhYpSajvooqzQKBgQCX\nYosTD1knhmlZaKMNehaA537eHIJT8lrbbRPsZvyM2rhpTksya1PiWUnRR1SVQ6o4\nygPR3Cx7VJiBkThMNrsNWzJw/4449gKzkILwHbDHEfe/ZLXIwGKA26aa7hvEeIwn\nFBhYpqcAAU6Cjdtga/4KZeNUxG4VEZmr078RgEju/QKBgQDT9m2fBROzVgKPunsy\ncYlFj+uagnp0BVNAcCcXgbtdbzgCXjq0uzLpIuHDu+kx7u6vj+zps7NQgR/glTVY\nW3SJfi5w1Y/Txun/+D0C4QFxVzJoukvit1hJ7QsgXcsYKArZQkV1RZUlWuq8Jvfj\nEP6o256vrORuPiQ3FCoyIhI1TA==\n-----END PRIVATE KEY-----\n",
-  "client_email": "sales-management@sales-management-499305.iam.gserviceaccount.com",
-  "client_id": "115061786718171932216",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sales-management%40sales-management-499305.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
 }
