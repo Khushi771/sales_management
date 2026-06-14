@@ -16,14 +16,16 @@ public class TransactionEntry extends PanacheEntity {
     public String unit;
     public TransactionType transactionType;
     public LocalDate entryDate;
+    public String category; 
 
     public TransactionEntry() {}
 
-    public TransactionEntry(String item, Double quantity, String unit, TransactionType transactionType) {
+    public TransactionEntry(String item, Double quantity, String unit, TransactionType transactionType, String category) {
         this.item = item;
         this.quantity = quantity;
         this.unit = unit;
         this.transactionType = transactionType;
         this.entryDate = LocalDate.now();
+        this.category = category;
     }
 }
