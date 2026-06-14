@@ -17,11 +17,14 @@ public class InventoryItem extends PanacheEntity {
 
     public String unit;
 
+    public String category; 
+
     public InventoryItem() {}
 
-    public InventoryItem(String name, Double currentStock, String unit) {
+    public InventoryItem(String name, Double currentStock, String unit, String category) {
         this.name = name;
         this.currentStock = currentStock;
         this.unit = unit;
+        this.category = category;
     }
 }
