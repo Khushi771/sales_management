@@ -83,7 +83,14 @@ public class SalesResource {
                         TransactionType type = item.type != null ? item.type : TransactionType.SALE;
                         
                         // 1. SAVE THE AUDIT TRAIL (LEDGER)
-                        TransactionEntry entity = new TransactionEntry(item.itemName, item.quantity, item.unit, type);
+                        // Inside the for loop in processDocumentUpload:
+                        TransactionEntry entity = new TransactionEntry(
+                                item.itemName,
+                                item.quantity,
+                                item.unit,
+                                item.category != null ? item.category : "General", // Use "General" if null
+                                type
+                        );
                         entity.persist();
                         savedTransactions.add(entity);
 

@@ -9,13 +9,13 @@ import dev.langchain4j.data.image.Image;
 public interface TransactionParserAgent {
 
     @UserMessage("""
-        Analyze the provided image of an inventory log with high precision.
+        Analyze the inventory log.
+        1. Identify the 'category' (e.g., Granite, Tiles). If no category header is found, use 'General'.
+        2. Extract the 'itemName' (e.g., 'Slab Black').
+        3. Extract 'quantity' and 'unit'.
+        4. Return the classification as PURCHASE or SALE.
         
-        For each line item:
-        1. Extract the name of the item.
-        2. Extract the exact numeric quantity into the 'quantity' field (as a double).
-        3. Extract the unit written next to the number (e.g., 'boxes', 'packets') into the 'unit' field. If no unit is specified, leave it blank.
-        4. Classify the row as a PURCHASE or a SALE.
+        Structure the response to group items under their respective categories.
     """)
     TransactionResult parseInventoryNote(Image image);
 }
