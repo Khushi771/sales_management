@@ -7,5 +7,6 @@ public class ExtractedItem {
     public String itemName;
     public Double quantity;
     public String unit; 
+    public String category;
     public TransactionType type;
 }
