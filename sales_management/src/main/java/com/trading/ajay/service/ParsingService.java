@@ -36,6 +36,7 @@ public class ParsingService {
                                 extracted.itemName,
                                 extracted.quantity,
                                 extracted.unit, // Passing the extracted unit here
+                                extracted.category,
                                 extracted.type != null ? extracted.type : TransactionType.SALE);
                         entries.add(entry);
                     }
