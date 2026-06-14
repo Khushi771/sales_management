@@ -88,8 +88,8 @@ public class SalesResource {
                                 item.itemName,
                                 item.quantity,
                                 item.unit,
-                                item.category != null ? item.category : "General", // Use "General" if null
-                                type
+                                type,
+                                item.category != null ? item.category : "General" // Use "General" if null
                         );
                         entity.persist();
                         savedTransactions.add(entity);
