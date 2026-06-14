@@ -100,7 +100,7 @@ public class SalesResource {
                         if (stockItem == null) {
                             // First time seeing this item: Create new stock record
                             Double initialStock = (type == TransactionType.PURCHASE) ? item.quantity : -item.quantity;
-                            InventoryItem newItem = new InventoryItem(item.itemName, initialStock, item.unit);
+                            InventoryItem newItem = new InventoryItem(item.itemName, initialStock, item.unit, item.category);
                             inventoryRepository.persist(newItem);
                         } else {
                             // Item exists: Do the Add/Subtract math
