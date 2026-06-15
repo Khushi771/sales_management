@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "inventory_stock")
 public class InventoryItem extends PanacheEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     public String name;
 
     @Column(nullable = false)
@@ -17,7 +17,7 @@ public class InventoryItem extends PanacheEntity {
 
     public String unit;
 
-    public String category; 
+    public String category;
 
     public InventoryItem() {}
 
