@@ -2,10 +2,7 @@ package com.trading.ajay.resource;
 
 import com.trading.ajay.entity.TransactionEntry;
 import com.trading.ajay.entity.InventoryItem;
-import com.trading.ajay.model.ExtractedItem;
-import com.trading.ajay.model.TransactionResult;
-import com.trading.ajay.model.TransactionType;
-import com.trading.ajay.repository.InventoryRepository;
+import com.trading.ajay.model.*;
 import com.trading.ajay.service.TransactionParserAgent;
 import dev.langchain4j.data.image.Image;
 import io.quarkus.logging.Log;
@@ -25,31 +22,58 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 @Path("/api/transactions")
 @Produces(MediaType.APPLICATION_JSON)
 public class SalesResource {
 
-    @Inject
-    TransactionParserAgent parserAgent;
-    
+    @Transactional
+    public void updateInventory(TransactionEntry entry) {
+        InventoryItem item = InventoryItem.find("name = ?1 and category = ?2", 
+                                                entry.item, 
+                                                entry.category).firstResult();
+        if (item == null) {
+            item = new InventoryItem();
+            item.name = entry.item;
+            item.category = entry.category;
+            item.unit = entry.unit;
+            item.currentStock = 0.0;
+            item.persist();
+        }
+
+        // 2. Adjust the stock based on transaction type
+        if (TransactionType.PURCHASE.equals(entry.transactionType)) {
+            item.currentStock += entry.quantity;
+        } else if (TransactionType.SALE.equals(entry.transactionType)) {
+            item.currentStock -= entry.quantity;
+        }
+        item.persist();
+    }
 
     @Inject
-    InventoryRepository inventoryRepository; // <-- INJECT NEW REPO
+    TransactionParserAgent parserAgent;
 
     @GET
     public List<TransactionEntry> getAllTransactions() {
         return TransactionEntry.listAll(Sort.by("entryDate").descending());
     }
 
+    @POST
+    @Path("/manual")
+    @Transactional
+    public void manualEntry(TransactionEntry entry) {
+        Log.infof("Item: %s, Qty: %s, Unit: %s, Type: %s, Category: %s", 
+            entry.item, entry.quantity, entry.unit, entry.transactionType, entry.category);
+        entry.persist();
+        updateInventory(entry);
+    }
+
     // --- NEW ENDPOINT TO FETCH LIVE INVENTORY ---
     @GET
     @Path("/inventory")
     public List<InventoryItem> getLiveInventory() {
-        return inventoryRepository.listAll();
+        return InventoryItem.listAll();
     }
 
     @POST
@@ -95,13 +119,15 @@ public class SalesResource {
                         savedTransactions.add(entity);
 
                         // 2. UPDATE THE LIVE INVENTORY STOCK
-                        InventoryItem stockItem = inventoryRepository.findByNameIgnoreCase(item.itemName);
-                        
+                        InventoryItem stockItem = InventoryItem.find("name = ?1 and category = ?2", 
+                                                entity.item, 
+                                                entity.category).firstResult();
+        
                         if (stockItem == null) {
                             // First time seeing this item: Create new stock record
                             Double initialStock = (type == TransactionType.PURCHASE) ? item.quantity : -item.quantity;
                             InventoryItem newItem = new InventoryItem(item.itemName, initialStock, item.unit, item.category);
-                            inventoryRepository.persist(newItem);
+                            newItem.persist();
                         } else {
                             // Item exists: Do the Add/Subtract math
                             if (type == TransactionType.PURCHASE) {
@@ -109,7 +135,6 @@ public class SalesResource {
                             } else {
                                 stockItem.currentStock -= item.quantity;
                             }
-                            // Because of @Transactional, Panache automatically saves this updated object to the DB!
                         }
                     }
                 }

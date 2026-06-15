@@ -1,12 +1,9 @@
 com/trading/ajay/resource/SalesResource.class
 com/trading/ajay/entity/TransactionEntry.class
 com/trading/ajay/service/TransactionParserAgent.class
-com/trading/ajay/service/OcrService.class
-com/trading/ajay/model/ExtractedTransactions.class
-com/trading/ajay/service/SalesExtractorAgent.class
 com/trading/ajay/repository/InventoryRepository.class
 com/trading/ajay/model/TransactionResult.class
 com/trading/ajay/entity/InventoryItem.class
 com/trading/ajay/model/TransactionType.class
+com/trading/ajay/model/ExtractedTransactions.class
 com/trading/ajay/model/ExtractedItem.class
-com/trading/ajay/service/ParsingService.class
